@@ -16,12 +16,12 @@ func main() {
 
 	type QuizAnswerDetail struct {
 		gorm.Model
-		QuestionText     string  `json:"questionText"`
-		SelectedAnswer   string  `json:"selectedAnswer"`
-		CorrectAnswer    string  `json:"correctAnswer"`
-		TimeToAnswer     float64 `json:"timeToAnswer"`
-		WasCorrect       bool    `json:"wasCorrect"`
-		QuizPlayerDataID uint    // Foreign key for association
+		QuestionText     string `json:"questionText"`
+		SelectedAnswer   string `json:"selectedAnswer"`
+		CorrectAnswer    string `json:"correctAnswer"`
+		TimeToAnswer     string `json:"timeToAnswer"` // <- change from float64 to string
+		WasCorrect       string `json:"wasCorrect"`   // <- also change if you're passing "ถูกต้อง"
+		QuizPlayerDataID uint
 	}
 
 	type PlayerQuizData struct {
