@@ -103,5 +103,9 @@ func main() {
 		c.JSON(200, gin.H{"message": "Player deleted"})
 	})
 
-	r.Run()
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // fallback for local
+	}
+	r.Run(":" + port)
 }
