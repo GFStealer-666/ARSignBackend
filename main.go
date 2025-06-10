@@ -9,17 +9,8 @@ import (
 )
 
 func main() {
-	appName := os.Getenv("APP_NAME")
-	var dsn string
 
-	switch appName {
-	case "ARSignWorld":
-		dsn = os.Getenv("DATABASE_URL_WORLD")
-	case "ARSignSpace":
-		dsn = os.Getenv("DATABASE_URL_SPACE")
-	default:
-		panic("Unknown app name")
-	}
+	var dsn = os.Getenv("DATABASE_URL")
 
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
