@@ -1,13 +1,25 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 func main() {
-	dsn := "root:khmksAKRJREjvPNBXUTYzbREXokRNkXE@tcp(interchange.proxy.rlwy.net:18891)/railway?charset=utf8mb4&parseTime=True&loc=Local"
+	appName := os.Getenv("APP_NAME")
+	var dsn string
+
+	switch appName {
+	case "ARSignWorld":
+		dsn = os.Getenv("DATABASE_URL_WORLD")
+	case "ARSignSpace":
+		dsn = os.Getenv("DATABASE_URL_SPACE")
+	default:
+		panic("Unknown app name")
+	}
 
 	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
