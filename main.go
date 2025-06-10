@@ -12,10 +12,8 @@ var tablePrefix = os.Getenv("TABLE_PREFIX")
 
 type PlayerQuizData struct {
 	gorm.Model
-	ProjectID             string             `json:"projectId"`
-	APIKey                string             `json:"apiKey"`
 	AppVersion            string             `json:"appversion"`
-	UniqueID              string             `json:"uniqueId"`
+	UniqueID              string             `json:"uniqueId"` // Unique ID for devices
 	UserName              string             `json:"userName"`
 	Gender                string             `json:"gender"`
 	Age                   int                `json:"age"`
