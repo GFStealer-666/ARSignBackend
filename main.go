@@ -72,7 +72,7 @@ func main() {
 		c.JSON(200, p)
 	})
 
-	r.GET("/players", func(c *gin.Context) {
+	r.GET("/leaderboard", func(c *gin.Context) {
 		var players []PlayerQuizData
 		if err := db.Preload("AnswerDetails").Find(&players).Error; err != nil {
 			c.JSON(500, gin.H{"error": err.Error()})
